@@ -16,14 +16,10 @@
 
 {% block content %}
 
-    {% show_block_content object.main_content %}
-
     <div>
         {% for obj in object.root_sections %}
             {% include 'catalog/parts/card.html' %}
         {% endfor %}
     </div>
-
-    {% show_block_content object.bottom_content %}
 
 {% endblock %}

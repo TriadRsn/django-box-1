@@ -4,6 +4,7 @@ from django.conf import settings
 from django.utils.html import strip_spaces_between_tags
 from easy_news.models import News
 from django.contrib.contenttypes.models import ContentType
+from ast import literal_eval
 
 try:
     NEWS_CT = ContentType.objects.get_for_model(News)
@@ -11,14 +12,6 @@ except:
     pass
 
 register = template.Library()
-
-
-@register.inclusion_tag('parts/block_content.html')
-def show_block_content(content):
-
-    """ Отображение блока html-контента """
-
-    return {'content': content}
 
 
 def get_ranged_pagination_pages(current, pages, count):
@@ -30,7 +23,7 @@ def get_ranged_pagination_pages(current, pages, count):
     if len(pages):
         first_page, last_page = pages[0], pages[-1]
         if count < last_page:
-            step = count / 2
+            step = count // 2
             left_page = current - step + 1
             right_page = current + step
             if left_page < first_page and right_page > last_page:
@@ -59,12 +52,12 @@ def get_custom_pagination(current, pages):
     data['pages'] = get_ranged_pagination_pages(current, pages, count=4)
     data['first'] = 1
     data['last'] = pages[-1]
-    data['prev'] = data['pages'][0] - 1
+    data['prev'] = current - 1
     if data['prev'] < data['first']:
         data['prev'] = None
-    data['next'] = data['pages'][-1] + 1
+    data['next'] = current + 1
     if data['next'] > data['last']:
-       data['next'] = None
+        data['next'] = None
     return data
 
 
@@ -93,4 +86,74 @@ def equal(val1, val2):
 
     """ Сравнение значений разных типов через приведение в юникод """
 
-    return unicode(val1) == unicode(val2)
+    return str(val1) == str(val2)
+
+
+@register.simple_tag
+def get_items_by_model_name(model_name, ordering=None, num=None, **kwargs):
+    """
+    return queryset of every items by model name with filtering
+    example:
+        {% get_items_by_model_name 'door' ordering='-id' num=20 show=True price__gt=6000 as doors %}
+    """
+    items = ContentType.objects.filter(model=model_name).first().get_all_objects_for_this_type().filter(**kwargs)
+    if ordering:
+        items = items.order_by(ordering)
+    if num:
+        items = items[:num]
+    return items
+
+
+@register.simple_tag
+def exclude_query(query, num=None, **kwargs):
+
+    """ exclude queryset objects """
+    result = ''
+    try:
+        result = query.exclude(**kwargs)
+
+        if num:
+            result = result[:num]
+    except:
+        pass
+    return result
+
+
+
+@register.simple_tag
+def filter_query(query, num=None, **kwargs):
+
+    """ filter queryset objects """
+    result = ''
+    try:
+        result = query.filter(**kwargs)
+
+        if num:
+            result = result[:num]
+    except:
+        pass
+    return result
+
+
+@register.filter
+def price_format(val):
+
+    """ Разделение разрядов числа пробелами """
+
+    s = str(val)
+    buf = ''
+    result = ''
+    for i in range(len(s)-1, -1, -1):
+        buf = s[i] + buf
+        if len(buf) == 3:
+            result = buf + ' ' + result
+            buf = ''
+    if len(buf):
+        result = buf + ' ' + result
+    return result
+
+
+@register.filter()
+def string_to_list(val):
+    list = literal_eval(val)
+    return list
