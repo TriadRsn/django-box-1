@@ -1,52 +1,54 @@
-.mfp-fade.mfp-bg
-	opacity: 0
-	transition: all 0.5s ease-in-out
-	background-color: rgba(0, 0, 0, 0.6)
-	&.mfp-ready
-		opacity: 1
-
-	&.mfp-removing
+.mfp-fade
+	&.mfp-bg
 		opacity: 0
+		transition: all 0.5s ease-in-out
+		background-color: rgba(0, 0, 0, 0.6)
+		&.mfp-ready
+			opacity: 1
 
+		&.mfp-removing
+			opacity: 0
 
-.mfp-fade.mfp-wrap .mfp-content
-	opacity: 0
-	transition: all 0.5s ease-in-out
+	&.mfp-wrap
+		.mfp-content
+			opacity: 0
+			transition: all 0.5s ease-in-out
 
-.mfp-fade.mfp-wrap.mfp-ready .mfp-content
-	opacity: 1
+		&.mfp-ready
+			.mfp-content
+				opacity: 1
 
-.mfp-fade.mfp-wrap.mfp-removing .mfp-content
-	opacity: 0
+		&.mfp-removing
+			.mfp-content
+				opacity: 0
 
 .mfp-move
-    .mfp-anim
-        opacity: 0
-        transition: all 0.5s ease-in-out
-        transform: translateX(-50px)
-        will-change: transform
+	.mfp-anim
+		opacity: 0
+		transition: all 0.5s ease-in-out
+		transform: translateX(-50px)
+		will-change: transform
 
-    &.mfp-bg
-        opacity: 0
-        background-color: rgba(0, 0, 0, 0.6)
-        transition: all 0.5s ease-in-out
+	&.mfp-bg
+		opacity: 0
+		background-color: rgba(0, 0, 0, 0.6)
+		transition: all 0.5s ease-in-out
 
+	&.mfp-ready
+		.mfp-anim
+			opacity: 1
+			transform: translateX(0)
 
-    &.mfp-ready
-        .mfp-anim
-            opacity: 1
-            transform: translateX(0)
+		&.mfp-bg
+			opacity: 1
 
-        &.mfp-bg
-            opacity: 1
+	&.mfp-removing
+		.mfp-anim
+			opacity: 0
+			transform: translateX(50px)
 
-    &.mfp-removing
-        .mfp-anim
-            opacity: 0
-            transform: translateX(50px)
-
-        &.mfp-bg
-            opacity: 0
+		&.mfp-bg
+			opacity: 0
 
 button.mfp-close
 	width: 24px
@@ -60,12 +62,11 @@ button.mfp-close
 	right: 20px
 	opacity: 1
 	@media screen and (max-width: $sm-max)
-	    top: 20px!important
-	    right: 20px
+		top: 20px!important
+		right: 20px
 	@media screen and (max-width: $xs-max)
-	    top: 18px!important
-	    right: 18px
-
+		top: 18px!important
+		right: 18px
 
 .mfp-gallery .mfp-image-holder button.mfp-close
 	width: 24px
@@ -77,22 +78,22 @@ button.mfp-close
 	opacity: 1
 	transition: opacity 0.7s ease-in-out
 	@media screen and (max-width: $sm-max)
-	    top: 16px!important
-	    right: -25px
+		top: 16px!important
+		right: -25px
 	@media screen and (max-width: $xs-max)
-	    width: 20px
-	    height: 20px
-	    opacity: 1
-	    right: 10px
-	    top: 28px!important
+		width: 20px
+		height: 20px
+		opacity: 1
+		right: 10px
+		top: 28px!important
 	&:hover
-	    opacity: 1
+		opacity: 1
 
 .mfp-gallery img.mfp-img
 	padding: 50px 0 80px
 	@media screen and (max-width: $xs-max)
-        padding: 40px 0
-        padding-top: 60px
+		padding: 40px 0
+		padding-top: 60px
 
 .mfp-gallery .mfp-figure:after
 	top: 40px
@@ -113,17 +114,17 @@ button.mfp-close
 	-webkit-line-clamp: 2
 	-webkit-box-orient: vertical
 	@media screen and (max-width: $xs-max)
-	    font-size: 14px
-	    line-height: 18px
-	    padding-right: 28px
+		font-size: 14px
+		line-height: 18px
+		padding-right: 28px
 
 .mfp-gallery .mfp-bottom-bar
 	margin-top: -70px
 	@media screen and (max-width: $xs-max)
-	    top: auto
-	    bottom: calc(100% - 48px)
-	    padding: 0 10px
-	    margin: 0
+		top: auto
+		bottom: calc(100% - 48px)
+		padding: 0 10px
+		margin: 0
 
 button.mfp-arrow
 	width: 45px
@@ -142,19 +143,19 @@ button.mfp-arrow
 	margin: 0
 	transition: opacity 0.7s ease-in-out
 	@media screen and (max-width: $xs-max)
-	    width: 40px
-	    height: 40px
-	    min-width: 40px
-	    min-height: 40px
-	    opacity: 1
-	    margin: 0
-	    top: auto
-	    bottom: 0
-	    transform: none
-	    position: fixed
-	    background-size: 32px 32px
+		width: 40px
+		height: 40px
+		min-width: 40px
+		min-height: 40px
+		opacity: 1
+		margin: 0
+		top: auto
+		bottom: 0
+		transform: none
+		position: fixed
+		background-size: 32px 32px
 	&:hover
-	    opacity: 1
+		opacity: 1
 	&:active
 		margin-top: 0
 
@@ -165,18 +166,18 @@ button.mfp-arrow-left
 	left: -102px
 	background-image: url('../img/modal-arrow-left.svg')
 	@media screen and (max-width: $xs-max)
-	    left: 0
+		left: 0
 
 button.mfp-arrow-right
 	right: -102px
 	background-image: url('../img/modal-arrow-right.svg')
 	@media screen and (max-width: $xs-max)
-	    right: 0
+		right: 0
 
 .mfp-image-holder .mfp-content
 	max-width: calc(100% - 220px)
 	@media screen and (max-width: $xs-max)
-	    max-width: 100%
+		max-width: 100%
 
 .mfp-container
 	overflow: hidden
@@ -184,13 +185,19 @@ button.mfp-arrow-right
 	padding: 0
 
 @media screen and (max-width: $xs-max)
-    .mfp-inline-holder
-        padding: 0
-        .mfp-content
-            height: 100%
-    .mfp-wrap
-        min-height: 100%
+	.mfp-inline-holder
+		padding: 0
+		min-height: 100vh
+		.mfp-content
+			height: 100vh
+			overflow: hidden
+	.mfp-wrap
+		min-height: 100vh
 
 .mfp-bg, .mfp-wrap
-    position: fixed!important
-    top: 0!important
+	position: fixed!important
+	top: 0!important
+	@media screen and (max-width: $xs-max)
+		overflow: hidden!important
+		height: 100vh!important
+		bottom: 0px

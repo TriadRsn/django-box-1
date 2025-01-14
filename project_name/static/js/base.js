@@ -9,7 +9,7 @@ $(function () {
     });
 
     //Wrap for Table
-    $(".placeholder table").wrap('<div class="table-wrap"></div>');
+    $('.placeholder table').wrap('<div class="table-wrap"></div>');
 
     //Wrap for Iframe
     let placeholderVideo = $('.placeholder iframe');

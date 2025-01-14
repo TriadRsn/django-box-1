@@ -9,7 +9,7 @@ body
 	font-size: 14px
 	overflow-x: hidden
 	@media screen and (max-width: $xs-max)
-	    min-width: 360px
+		min-width: 360px
 	&.fix-anim *
 		transition: none
 
@@ -38,63 +38,53 @@ sup
 	font-size: smaller
 
 .container
-	max-width: 1270px
+	max-width: 1280px
 	width: 100%
 	margin: 0 auto
 	padding: 0 15px
 	position: relative
 
 .section-default
-	padding: 100px 0
-	@media screen and (max-width: $md-max)
-	    padding: 80px 0
+	padding: 80px 0
 	@media screen and (max-width: $sm-max)
-	    padding: 60px 0
+		padding: 60px 0
 	@media screen and (max-width: $xs-max)
-	    padding: 40px 0
-
-	&-min
 		padding: 48px 0
-		@media screen and (max-width: $xs-max)
-		    padding: 40px 0px
-
 	&--top
-		padding-top: 0
+		padding-top: 0px!important
 
 	&--bottom
-		padding-bottom: 0
+		padding-bottom: 0px!important
 
-	&__bottom
-		display: flex
-		align-items: center
-		justify-content: center
-		margin-top: 48px
+	&-margin
+		margin: 80px 0
 		@media screen and (max-width: $sm-max)
-		    margin-top: 32px
+			margin: 60px 0
 		@media screen and (max-width: $xs-max)
-		    margin-top: 24px
-		.btn + .btn
-		    margin-left: 20px
+			margin: 48px 0
+		&--top
+			margin-top: 0px!important
 
-.section-default-margin
-	margin: 100px 0
-	@media screen and (max-width: $md-max)
-	    margin: 80px 0
-	@media screen and (max-width: $sm-max)
-	    margin: 60px 0
-	@media screen and (max-width: $xs-max)
-	    margin: 40px 0
+		&--bottom
+			margin-bottom: 0px!important
 
-	&-min
-		margin: 48px 0
+	&__header
+		width: 100%
+		margin-bottom: 40px
+		display: flex
+		position: relative
+		@media screen and (max-width: $sm-max)
+			margin-bottom: 32px
+
+	&__footer
+		width: 100%
+		margin-top: 60px
+		display: flex
+		position: relative
+		@media screen and (max-width: $sm-max)
+			margin-top: 40px
 		@media screen and (max-width: $xs-max)
-		    margin: 40px 0
-
-	&--top
-		margin-top: 0
-
-	&--bottom
-		margin-bottom: 0
+			margin-top: 32px
 
 .section-background
 	background-size: cover
@@ -109,7 +99,7 @@ sup
 	overflow-y: clip
 	overflow-x: clip
 	@media screen and (max-width: $xs-max)
-	    overflow: hidden
+		overflow: hidden
 
 .noscroll
 	overflow: hidden
